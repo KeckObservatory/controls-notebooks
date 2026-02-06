@@ -113,7 +113,7 @@ def GetSlips(archiver, pv_pos, pv_motor_slip, motor, t0, t1):
     for sampletime, _ in slips:
 
         # Build the URL to retrieve the data from the server
-        t = sampletime.isoformat() + '-10:00'
+        t = sampletime.isoformat() + '-00:00'
         parm = urllib.parse.urlencode({'at': t})
         url = f'http://{archiver}:{port}/retrieval/data/getDataAtTime.json?{parm}'
         payload = [pv_pos]
