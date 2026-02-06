@@ -15,4 +15,5 @@ Install these applications on your VM.
 tbd
 
 #### GitHub Desktop
-tbd
+
+Download installer from https://desktop.github.com/download/
