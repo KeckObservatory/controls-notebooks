@@ -212,7 +212,7 @@ def ReduceSlipData(df):
 from bokeh.plotting import figure, output_file, save, show
 from bokeh.models import ColumnDataSource, HoverTool
 from bokeh.palettes import Plasma11 as palette
-from bokeh.io import output_notebook
+from bokeh.io import output_notebook, export_png
 output_notebook()
 
 def PlotSlips(reduced, flip=True, top=-90):
@@ -332,6 +332,15 @@ def PlotSlips(reduced, flip=True, top=-90):
     p.grid.visible = False
 
     show(p)
-
+    
+    '''
+    try:
+        export_png(p, filename="last_plot.png")
+    except RuntimeError as e:
+        print(f'Install these libraries to save the plot automatically to disk:')
+        print(f'  conda install -c conda-forge firefox geckodriver')
+        print(f'\nError was: {e}')
+    '''
+    
 log.info('Plotting function loaded.')
 
