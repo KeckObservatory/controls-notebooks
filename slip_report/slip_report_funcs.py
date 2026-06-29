@@ -153,8 +153,8 @@ def GetAllSlips(telescope, t0, t1):
     log.info(f'Motor slip analysis for {telescope}: {t0} to {t1}')
 
     # Check the telescope parameter
-    if telescope not in [0,1]:
-        log.critical('Specify telescope as either 0 or 1.')
+    if telescope not in [1,2]:
+        log.critical('Specify telescope as either 1 or 2.')
         return results
 
     # EPICS record names for our data
