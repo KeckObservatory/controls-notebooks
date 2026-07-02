@@ -125,6 +125,7 @@ def GetSlips(archiver, pv_pos, pv_motor_slip, motor, t0, t1):
         # Convert the JSON into arrays
         try:
             pos = json.loads(response.content)[pv_pos]['val']
+            pos = pos * 180 / math.pi  # convert from radians to degrees
             pos = math.floor(pos)  # do not need fractional degrees
 
             # Normalize to positive degree values
@@ -159,7 +160,10 @@ def GetAllSlips(telescope, t0, t1):
 
     # EPICS record names for our data
     pv_motor_slip_template = 'k{}:dcs:axe:az:mtr{}Slip'
-    pv_pos_template = 'k{}:dcs:axe:az:cepDeg'
+
+    # 2026-07-02: Change cepDeg to just cep and convert to degrees in the code, since the archiver doesn't have as much
+    # history for cepDeg (2024) as it does for cep (2022).  The slip report will convert the cep value to degrees, which is what we want anyway.
+    pv_pos_template = 'k{}:dcs:axe:az:cep'
 
     try:
         for motor in motors:
