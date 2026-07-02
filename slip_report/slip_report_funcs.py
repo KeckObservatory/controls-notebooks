@@ -106,6 +106,8 @@ def GetSlips(archiver, pv_pos, pv_motor_slip, motor, t0, t1):
     if count == 0:
         log.warning(f'No motor slips found for {pv_motor_slip} at {start}')
         return pd.DataFrame([], columns=['sampletime', 'motor', 'pos'])
+    else:
+        log.info(f'Found {count} motor slips for {pv_motor_slip} at {start}')
 
     # -----------------------------------------------------------------------------
     # Get the AZ position of each slip
